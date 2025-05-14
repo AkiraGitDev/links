@@ -10,6 +10,5 @@ container: {
     name: {
         fontSize: 16,
         fontWeight: '600',
-        color: colors.gray[400],
     },
 })
