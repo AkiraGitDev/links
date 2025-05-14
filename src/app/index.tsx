@@ -3,8 +3,7 @@ import {Text, View, StyleSheet} from "react-native"
 export default function Index(){
     return(
         <View style={styles.container}>
-            <Text style={styles.title}>Hello React Native!</Text>
-            <Text style={styles.title}>Hello React Native!</Text>
+            <Text style={styles.title}>Teste!</Text>
         </View>
     )
 }
