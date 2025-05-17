@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 24,
         marginBottom: 24,
     },
-    Tile: {
+    title: {
         color: colors.gray[200],
         fontSize: 24,
         fontWeight: '600',
