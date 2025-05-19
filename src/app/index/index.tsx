@@ -35,6 +35,24 @@ export default function Index(){
         setLink(selected)
     }
 
+    async function linkRemove() {
+        try {
+            await linkStorage.remove(link.id)
+            getLinks()
+            setShowModal(false)
+        } catch (error) {
+            Alert.alert("Erro", "Não foi possível excluir")
+            console.log(error)
+        }
+    }
+
+    function handleRemove() {
+        Alert.alert("Excluir", "Deseja realmente excluir?", [
+            {style: "cancel", text: "Não"},
+            {text: "Sim", onPress: linkRemove},
+        ])
+    }
+
     useFocusEffect(
         useCallback(() => {
             getLinks()
@@ -70,11 +88,8 @@ export default function Index(){
 
             <Modal transparent visible={showModal} animationType="slide">
                 <View style={styles.modal}>
-
                     <View style={styles.modalContent}>
-
-                        <View style={styles.modalHeader}>
-                            
+                        <View style={styles.modalHeader}>     
                             <Text style={styles.modalCategory}>{link.category}</Text>
                             
                             <TouchableOpacity onPress={() => setShowModal(false)}>
@@ -83,27 +98,20 @@ export default function Index(){
                                 size={20}
                                 color={colors.gray[400]} />
                             </TouchableOpacity>
-
                         </View>
-
                         <Text style={styles.modalLinkName}>
                             {link.name}
                         </Text>
-
                         <Text style={styles.modalUrl}>
                             {link.url}
                         </Text>
-
                         <View style={styles.modalFooter}>
-                            <Option name="Excluir" icon="delete" variant="secondary" />
+                            <Option name="Excluir" icon="delete" variant="secondary" onPress={handleRemove}/>
                             <Option name="Abrir" icon="language" />
                         </View>
-
                     </View>
-
                 </View>
             </Modal>
-
         </View>
     )
 }
